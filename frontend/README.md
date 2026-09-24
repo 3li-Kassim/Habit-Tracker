@@ -43,7 +43,8 @@ The backend exposes a REST API for managing habits and their daily completions. 
 ```
    Create a `.env` file in `backend/` with your database connection string:
    DATABASE_URL=your_postgres_connection_string
-    Create the required tables:
+
+Create the required tables:
 ```sql
    CREATE TABLE habits (
      id SERIAL PRIMARY KEY,
