@@ -42,3 +42,31 @@ The backend exposes a REST API for managing habits and their daily completions. 
    npm install
 ```
    Create a `.env` file in `backend/` with your database connection string:
+   DATABASE_URL=your_postgres_connection_string
+    Create the required tables:
+```sql
+   CREATE TABLE habits (
+     id SERIAL PRIMARY KEY,
+     name VARCHAR(100) NOT NULL,
+     created_at TIMESTAMP DEFAULT NOW()
+   );
+
+   CREATE TABLE completions (
+     id SERIAL PRIMARY KEY,
+     habit_id INTEGER REFERENCES habits(id),
+     completed_on DATE
+   );
+```
+   Start the server:
+```bash
+   npm run dev
+```
+
+3. Set up the frontend
+```bash
+   cd frontend
+   npm install
+   npm run dev
+```
+
+The app will be running at `http://localhost:5173`, connected to the API at `http://localhost:3000`.
